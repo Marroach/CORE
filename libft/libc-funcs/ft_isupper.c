@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftbzero.c                                          :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marisald <marisald@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-09-26 11:22:28 by marisald          #+#    #+#             */
-/*   Updated: 2024-09-26 11:22:28 by marisald         ###   ########.fr       */
+/*   Created: 2024-09-26 11:33:55 by marisald          #+#    #+#             */
+/*   Updated: 2024-09-26 11:33:55 by marisald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int     ft_isupper(int c)
 {
-	char	*ptr;
-	size_t	i;
-
-	if (!n)
-		return ;
-	ptr = s;
-	i = 0;
-	while (i < n)
-		*(ptr + i++) = 0;
+    if (c >= 'A' && c <= 'Z')
+        return (1);
+    return (0);
 }
-
-int main()
-{
-    char bugger[10] = "XXXXXX";    
-    printf("Before bzero %s\n", bugger);
-    ft_bzero(bugger, 1);
-
-    printf("After bzero %s\n", bugger);
-
-    return 0;
-}
-//turns everything to 000 not just the size_t
