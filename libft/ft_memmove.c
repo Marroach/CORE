@@ -1,15 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marisald <marisald@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-09-26 11:21:47 by marisald          #+#    #+#             */
-/*   Updated: 2024-09-26 11:21:47 by marisald         ###   ########.fr       */
+/*   Created: 2024-09-26 11:22:01 by marisald          #+#    #+#             */
+/*   Updated: 2024-09-26 11:22:01 by marisald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isalpha(int c)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
+	char *d;
+	char *s;
+
+	d = (char *)dst;
+	s = (char *)src;
+	if (dst == src)
+		return (dst);
+	if (s < d)
+	{
+		while (len--)
+			*(d + len) = *(s + len);
+		return (dst);
+	}
+	while (len--)
+		*d++ = *s++;
+	return (dst);
 }

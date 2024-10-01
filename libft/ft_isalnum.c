@@ -12,22 +12,22 @@
 #include <stdio.h>
 #include "libft.h"
 
-int	ft_isalpha(int c)
-{
-	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
-}
-
-int		ft_isdigit(int c)
-{
-	return (c >= 48 && c <= 57);
-}
-
-
-
-// int		ft_isalnum(int c)
+// int	ft_isalpha(int c)
 // {
-// 	return (ft_isalpha(c) || ft_isdigit(c));
+// 	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
 // }
+
+// int		ft_isdigit(int c)
+// {
+// 	return (c >= 48 && c <= 57);
+// }
+
+
+
+int		ft_isalnum(int c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c));
+}
 
 // int main()
 
