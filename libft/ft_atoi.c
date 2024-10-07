@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marisald <marisald@student.42.fr>          #+#  +:+       +#+        */
+/*   By: marsaldana <marsaldana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-09-26 11:21:18 by marisald          #+#    #+#             */
-/*   Updated: 2024-09-26 11:21:18 by marisald         ###   ########.fr       */
+/*   Created: 2024/09/26 11:21:18 by marisald          #+#    #+#             */
+/*   Updated: 2024/10/02 14:15:35 by marsaldana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
-#include "stdio.h"
-int     ft_isspace(int c)
-{
-    return (c == '\f' || c == '\n' || c == '\r' \
-    || c == '\t' || c == '\v' || c == ' ');
-}
 int     ft_atoi(const char *str)
 {
     int num;
@@ -34,13 +29,3 @@ int     ft_atoi(const char *str)
     return (num * sign);
 }
 
-int main ()
-{
-	char *test = "45854545200";
-	int convert = ft_atoi(test);
-
-
-	printf("test %d", convert);
-	return 0;
-
-}

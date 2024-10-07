@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftbzero.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marisald <marisald@student.42.fr>          #+#  +:+       +#+        */
+/*   By: marsaldana <marsaldana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-09-26 11:22:28 by marisald          #+#    #+#             */
-/*   Updated: 2024-09-26 11:22:28 by marisald         ###   ########.fr       */
+/*   Created: 2024/09/26 11:22:28 by marisald          #+#    #+#             */
+/*   Updated: 2024/10/02 15:15:17 by marsaldana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <string.h>
+
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -24,15 +24,3 @@ void	ft_bzero(void *s, size_t n)
 	while (i < n)
 		*(ptr + i++) = 0;
 }
-
-int main()
-{
-    char bugger[10] = "XXXXXX";    
-    printf("Before bzero %s\n", bugger);
-    ft_bzero(bugger, 1);
-
-    printf("After bzero %s\n", bugger);
-
-    return 0;
-}
-//turns everything to 000 not just the size_t
