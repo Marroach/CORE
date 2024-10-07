@@ -9,9 +9,13 @@
 /*   Updated: 2024-09-26 11:34:36 by marisald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int     ft_islower(int c)
+
+#include "libft.h"
+
+int	ft_islower(int c)
+
 {
-    if (c >= 'a' && c <= 'z')
-        return (1);
-    return (0);
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
 }

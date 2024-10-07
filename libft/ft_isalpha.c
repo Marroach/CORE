@@ -12,8 +12,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	return (ft_islower(c) || ft_isupper(c));
 }
-

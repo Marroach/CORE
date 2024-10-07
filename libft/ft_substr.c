@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "libft.h"
 
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -34,17 +35,17 @@ if (!newstr)
 
 
 
-int main(void)
-{
-    char *str = "Hello, World!";
-    char *sub;
+// int main(void)
+// {
+//     char *str = "Hello, World!";
+//     char *sub;
 
-    sub = ft_substr(str, 7, 5);
-    if (sub)
-    {
-        printf("Substring: %s\n", sub);
-        free(sub); // Don't forget to free the allocated memory
-    }
+//     sub = ft_substr(str, 7, 5);
+//     if (sub)
+//     {
+//         printf("Substring: %s\n", sub);
+//         free(sub); // Don't forget to free the allocated memory
+//     }
 
-    return 0;
-}
+//     return 0;
+// }

@@ -33,16 +33,16 @@ char *ft_strjoin(char const *s1, char const *s2)
 
 }
 
-int main(void)
-{
-    char *str1 = "Hello, ";
-    char *str2 = "World!";
+// int main(void)
+// {
+//     char *str1 = "Hello, ";
+//     char *str2 = "World!";
 
    
  
-        printf("Joint String %s", ft_strjoin(str1, str2));
-        // free(jntstr); // Don't forget to free the allocated memory
+//         printf("Joint String %s", ft_strjoin(str1, str2));
+//         // free(jntstr); // Don't forget to free the allocated memory
     
 
-    return 0;
-}
+//     return 0;
+// }
