@@ -11,20 +11,24 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-char	*ft_strrchr(const char *s, int c)
-{
-	int		i;
-	char	*ptr;
 
-	i = 0;
-	ptr = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			ptr = (char *)(s + i);
-		i++;
-	}
-	if (s[i] == c)
-		ptr = (char *)(s + i);
-	return (ptr);
+char    *ft_strrchr(const char *s, int c)
+{
+    int     i;
+
+    // Early return if both `s` is empty and `c` is '\0'
+    if (!*s && c == 0)
+        return ((char *)s);
+
+    i = ft_strlen(s);
+    if (c == 0)
+        return ((char *)s + i);
+
+    while (i >= 0)
+    {
+        if (s[i] == (char)c)  // Cast `c` to `char` for proper comparison
+            return ((char *)s + i);
+        i--;
+    }
+    return (NULL);
 }

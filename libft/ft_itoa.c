@@ -26,7 +26,7 @@ static int	ft_estim(long n)
 		isneg++;
 		n = -n;
 	}
-	while (n >= 1)
+		while (n >= 1)
 	{
 		estim++;
 		n /= 10;
@@ -61,8 +61,8 @@ static char	*ft_gen(char *rtn, long nbr, int len, int isneg)
 
 char	*ft_itoa(int n)
 {
-	int	len;
-	int	isneg;
+	int		len;
+	int		isneg;
 	char	*rtn;
 	long	nbr;
 

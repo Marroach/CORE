@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//*b is A pointer to the block of memory that you want to fill
-// int c: The byte value you want to set in the memory block 
-// char, as only one byte will be used from this value.
-// size_t len: The number of bytes to fill, indicating how large the memory block is.
 
 void	*ft_memset(void *b, int c, size_t len)
 {
