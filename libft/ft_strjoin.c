@@ -14,29 +14,46 @@
 #include <string.h>
 #include "libft.h"
 
+#include <stdlib.h>  // For malloc
+#include <string.h>  // For strlen
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*jntstr;
 	size_t	i;
 	size_t	j;
+	size_t	len1;
+	size_t	len2;
 
-	i = 0;
-	j = 0;
-	jntstr = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s1) + 1));
+	if (!s1 && !s2)  // If both are NULL, return NULL
+		return (NULL);
+
+	// Calculate lengths of the strings
+	len1 = (s1) ? strlen(s1) : 0;  // Use strlen only if s1 is not NULL
+	len2 = (s2) ? strlen(s2) : 0;  // Use strlen only if s2 is not NULL
+
+	// Allocate memory for the joined string
+	jntstr = (char *)malloc(sizeof(char) * (len1 + len2 + 1)); // +1 for the null terminator
 	if (!jntstr)
 		return (NULL);
-	while (s1[i])
-	{
-		jntstr[j++] = s1[i];
-		i++;
-	}
+
+	// Copy first string into jntstr
 	i = 0;
-	while (s2[i])
+	while (i < len1)
 	{
-		jntstr[j++] = s2[i];
+		jntstr[i] = s1[i];
 		i++;
 	}
-	jntstr[j] = 0;
+
+	// Copy second string into jntstr
+	j = 0;
+	while (j < len2)
+	{
+		jntstr[i++] = s2[j];
+		j++;
+	}
+
+	jntstr[i] = '\0';  // Null-terminate the new string
 	return (jntstr);
 }
 

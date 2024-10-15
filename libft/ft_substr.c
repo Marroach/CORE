@@ -13,32 +13,51 @@
 #include <stdlib.h>
 #include <string.h>
 #include "libft.h"
+#include <stdlib.h>  // For malloc
+#include <string.h>  // For strlen
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*newstr;
 	size_t	i;
-	size_t	j;
+	size_t	str_len;
 
-	newstr = (char *)malloc(sizeof(*s) * (len + 1));
 	if (!s)
 		return (NULL);
+
+	str_len = strlen(s);  // Get the length of the input string
+
+	// If start is beyond the string length, return an empty string
+	if (start >= str_len)
+	{
+		newstr = malloc(1);  // Allocate memory for an empty string
+		if (!newstr)
+			return (NULL);
+		newstr[0] = '\0';  // Empty string
+		return (newstr);
+	}
+
+	// Adjust len if it exceeds the remaining part of the string
+	if (len > str_len - start)
+		len = str_len - start;
+
+	// Allocate memory for the substring + null terminator
+	newstr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!newstr)
 		return (NULL);
+
+	// Copy the substring from the original string
 	i = 0;
-	j = 0;
-	while (s[i])
+	while (i < len)
 	{
-		if (i >= start && j < len)
-		{
-			newstr[j] = s[i];
-			j++;
-		}
+		newstr[i] = s[start + i];
 		i++;
 	}
-	newstr[j] = 0;
+	newstr[i] = '\0';  // Null-terminate the new string
+
 	return (newstr);
 }
+
 
 // int main(void)
 // {

@@ -10,67 +10,52 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "stdio.h"
+#include <stdlib.h>  // For malloc
+#include "libft.h"    // For ft_strdup (if needed)
 
-static int	ft_estim(long n)
+static int	ft_numlen(long n)
 {
-	size_t	estim;
-	int		isneg;
+	int		len;
 
-	estim = 0;
-	isneg = 0;
-	if (n < 0)
+	len = 0;
+	if (n <= 0)  // Handle negative numbers and zero
+		len++;
+	while (n != 0)
 	{
-		estim++;
-		isneg++;
-		n = -n;
-	}
-		while (n >= 1)
-	{
-		estim++;
+		len++;
 		n /= 10;
 	}
-	return (estim);
+	return (len);
 }
 
-static char	*ft_gen(char *rtn, long nbr, int len, int isneg)
+static char	*ft_fill_str(char *rtn, long nbr, int len)
 {
-	if (nbr != 0)
-		rtn = malloc(sizeof(char) * (len + 1));
-	else
-		return (rtn = ft_strdup("0"));
-	if (!rtn)
-		return (0);
-	isneg = 0;
+	rtn[len] = '\0'; 
 	if (nbr < 0)
 	{
-		isneg++;
+		rtn[0] = '-';
 		nbr = -nbr;
 	}
-	rtn[len] = '\0';
-	while (--len)
+	while (--len >= 0)
+	{
+		if (rtn[len] == '-')
+			break;
 		rtn[len] = (nbr % 10) + '0';
-	nbr /= 10;
-	if (isneg == 1)
-		rtn[0] = '-';
-	else
-		rtn[0] = (nbr % 10) + '0';
+		nbr /= 10;
+	}
 	return (rtn);
 }
 
 char	*ft_itoa(int n)
 {
 	int		len;
-	int		isneg;
 	char	*rtn;
 	long	nbr;
 
 	nbr = n;
-	len = ft_estim(nbr);
-	rtn = 0;
-	isneg = 0;
-	if (!(rtn = ft_gen(rtn, nbr, len, isneg)))
-		return (0);
-	return (rtn);
+	len = ft_numlen(nbr);
+	rtn = (char *)malloc(sizeof(char) * (len + 1));
+	if (!rtn)
+		return (NULL);
+	return (ft_fill_str(rtn, nbr, len));
 }

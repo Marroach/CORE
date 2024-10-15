@@ -17,3 +17,12 @@ int	ft_isascii(int c)
 {
 	return (c >= 0 && c < 128);
 }
+
+// #include <stdio.h>
+
+// int main()
+// {
+// 	int test = 65;
+
+// 	printf ("%d ", ft_isascii(test));
+// }

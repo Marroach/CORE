@@ -10,16 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>  // For malloc
 #include "libft.h"
-
 void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*ptr;
+	unsigned char	*ptr;
 	size_t	i;
 
-	ptr = b;
+	ptr = (unsigned char *)b;  // Cast to unsigned char to match standard behavior
 	i = 0;
 	while (i < len)
-		*(ptr + i++) = c;
+	{
+		ptr[i] = (unsigned char)c;  // Cast 'c' to unsigned char to ensure only the lower byte is used
+		i++;
+	}
 	return (b);
 }

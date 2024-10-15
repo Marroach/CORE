@@ -1,103 +1,102 @@
 #include "libft.h"
 
-static void	ft_freeup(char *strs)
+static int	get_stringptr_length(const char *s, char c, int i)
 {
-	int	i;
+	int		count;
 
-	i = 0;
-	while (strs[i] != '\0')
+	count = 0;
+	while (s[i])
 	{
-		free(strs);
-		i++;
-	}
-	free(strs);
-}
-
-static int	ft_wordcount(char *str, char c)
-{
-	int	i;
-	int	word;
-
-	i = 0;
-	word = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] != c)
+		while (s[i] == c)
 		{
-			word++;
-			while (str[i] != c && str[i] != '\0')
-				i++;
-			if (str[i] == '\0')
-				return (word);
+			i++;
 		}
-		i++;
-	}
-	return (word);
-}
-
-static void	ft_strcpy(char *word, char *str, char c, int j)
-{
-	int	i;
-
-	i = 0;
-	while (str[j] != '\0' && str[j] == c)
-		j++;
-	while (str[j + i] != c && str[j + i] != '\0')
-	{
-		word[i] = str[j + i];
-		i++;
-	}
-	word[i] = '\0';
-}
-
-static char	*ft_stralloc(char *str, char c, int *k)
-{
-	char	*word;
-	int		j;
-
-	j = *k;
-	word = NULL;
-	while (str[*k] != '\0')
-	{
-		if (str[*k] != c)
+		if (s[i])
 		{
-			while (str[*k] != '\0' && str[*k] != c)
-				*k += 1;
-			word = (char *)malloc(sizeof(char) * (*k + 1));
-			if (word == NULL)
-				return (NULL);
+			count++;
+		}
+		while (s[i] != c && s[i])
+		{
+			i++;
+		}
+	}
+	return (count);
+}
+
+static int	get_len(const char *s, char c, int i)
+{
+	int	start_i;
+
+	while (s[i] && s[i] == c)
+	{
+		i++;
+	}
+	start_i = i;
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
 			break ;
 		}
-		*k += 1;
-	}
-	ft_strcpy(word, str, c, j);
-	return (word);
-}
-
-char	**ft_split(char const *str, char c)
-{
-	char	**strs;
-	int		i;
-	int		j;
-	int		pos;
-
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	pos = 0;
-	j = ft_wordcount((char *)str, c);
-	strs = (char **)malloc(sizeof(char *) * (j + 1));
-	if (strs == NULL)
-		return (NULL);
-	strs[j] = NULL;
-	while (i < j)
-	{
-		strs[i] = ft_stralloc(((char *)str), c, &pos);
-		if (strs[i] == NULL)
-		{
-			ft_freeup(strs[i]);
-		}
 		i++;
 	}
-	return (strs);
+	return (i - start_i);
+}
+
+static void	fill_string(const char *str_in, char *str_out, char c, int *i)
+{
+	int	j;
+
+	j = 0;
+	while (str_in[*i] && str_in[*i] == c)
+	{
+		(*i)++;
+	}
+	while (str_in[*i])
+	{
+		if (str_in[*i] == c)
+		{
+			break ;
+		}
+		str_out[j] = str_in[*i];
+		(*i)++;
+		j++;
+	}
+}
+
+char	**free_all(char **failed_array, int length)
+{
+	while (length)
+	{
+		free(failed_array[length - 1]);
+		length--;
+	}
+	free(failed_array);
+	return (0);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	int		str_count;
+	int		i;
+	int		j;
+	char	**str_array;
+
+	if (!s)
+		return (0);
+	i = 0;
+	j = 0;
+	str_count = get_stringptr_length(s, c, 0);
+	str_array = (char **)ft_calloc(str_count + 1, sizeof(char *));
+	if (!str_array)
+		return (0);
+	while (s[i] && j < str_count)
+	{
+		str_array[j] = (char *)ft_calloc(get_len(s, c, i) + 1, sizeof(char));
+		if (!str_array[j])
+			return (free_all(str_array, j));
+		fill_string(s, str_array[j], c, &i);
+		j++;
+	}
+	return (str_array);
 }

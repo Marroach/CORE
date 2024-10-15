@@ -13,5 +13,12 @@
 
 void	ft_putendl_fd(char const *s, int fd)
 {
-	ft_putstr_fd(ft_strjoin(s, "\n"), fd);
+    // Create the new string with a newline
+	char *str_with_newline = ft_strjoin(s, "\n");
+	if (str_with_newline != NULL) {
+        // Write the string to the specified file descriptor
+		ft_putstr_fd(str_with_newline, fd);
+        // Free the allocated memory to prevent memory leak
+		free(str_with_newline);
+	}
 }
