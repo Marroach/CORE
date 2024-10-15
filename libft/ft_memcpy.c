@@ -27,14 +27,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		dstc[n] = srccc[n];
 	return (dst);
 }
-
-// #include <string.h>
-// int  main()
-// {
-//     const char *src = "Hello, World!";
-//     char dest[20];
-//     printf("before copy: %s\n", dest);
-
-//     ft_memcpy(dest, src, strlen(src) + 1); // +1 to copy the null terminator
-//     printf("after copy: %s\n", dest);
-// }

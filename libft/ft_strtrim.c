@@ -52,25 +52,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[i] = 0;
 	return (str);
 }
-
-// int main(void)
-// {
-//     char *s1 = "  ---Hello, World!---  ";
-//     char *set = " -"; // Characters to trim (spaces and dashes in this case)
-
-//     char *trimmed_str = ft_strtrim(s1, set); // Call to ft_strtrim
-//     if (trimmed_str)
-//     {
-//         printf("Original string: '%s'\n", s1);
-//         printf("Trimmed string: '%s'\n", trimmed_str);
-
-//         // Once done, free the allocated memory for the trimmed string
-//         free(trimmed_str);
-//     }
-//     else
-//     {
-//         printf("Memory allocation failed\n");
-//     }
-
-//     return 0;
-// }

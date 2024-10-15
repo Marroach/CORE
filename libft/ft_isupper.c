@@ -16,8 +16,3 @@ int	ft_isupper(int c)
 {
 	return (c >= 'A' && c <= 'Z');
 }
-
-// #include <stdio.h>
-// int main()
-// { 	int test = 97;
-// 	printf ("%d ", ft_isupper(test));}
