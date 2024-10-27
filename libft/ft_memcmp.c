@@ -28,13 +28,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-// #include <stdio.h>
-
-// int main ()
-// {
-// const void *str1 = "abc";
-// const void *str2 = "123";
-
-// printf("comparison results %d \n", ft_memcmp(str1, str2, 3));
-// }

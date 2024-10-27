@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 void	ft_bzero(void *s, size_t n)
 {
 	char	*ptr;
@@ -25,17 +24,3 @@ void	ft_bzero(void *s, size_t n)
 	while (i < n)
 		*(ptr + i++) = 0;
 }
-
-// #include <stdio.h>
-
-// int main()
-
-// {
-// 	char str[] = "dark memories";
-// 	printf("Before: %s \n", str);
-	
-// ft_bzero(str, 4);
-
-// 	printf("after: %s \n", str);
-
-// }

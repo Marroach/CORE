@@ -9,24 +9,17 @@
 /*   Updated: 2024-10-10 12:38:21 by marisald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-	#include "libft.h"
 
-	void	ft_putendl_fd(char const *s, int fd)
+#include "libft.h"
+
+void	ft_putendl_fd(char const *s, int fd)
+{
+	char	*newstr;
+
+	newstr = ft_strjoin(s, "\n");
+	if (newstr != NULL)
 	{
-		char	*newstr;
-
-		newstr = ft_strjoin(s, "\n");
-		if (newstr != NULL)
-		{
-			ft_putstr_fd(newstr, fd);
-			free(newstr);
-		}
+		ft_putstr_fd(newstr, fd);
+		free(newstr);
 	}
-	#include <stdio.h>
-
-// int main() {
-//     char *let = "c";
-//     int file = 2;
-
-//     ft_putendl_fd(let, file);  // This writes to 'file' without needing printf
-// }
+}

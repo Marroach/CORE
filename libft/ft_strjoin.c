@@ -19,8 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	stot_len;
 	char	*rtn;
 
-	// if (!s1 && !s2)
-	// 	return (ft_strdup("")); do i need this?
+	if (!s1 && !s2)
+		return (ft_strdup(""));
 	if (s1 && !s2)
 		return (ft_strdup(s1));
 	if (!s1 && s2)
@@ -36,13 +36,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	rtn[stot_len - 1] = '\0';
 	return (rtn);
 }
-
-// int main()
-// {
-
-// char *str1 = NULL;
-// char *str2 = NULL;
-
-// printf("%s \n", ft_strjoin(str1, str2) );
-
-// }
